@@ -12,6 +12,7 @@
 </nav>
 <div class="remedios index large-9 medium-8 columns content">
     <h3><?= __('Remedios') ?></h3>
+    <h4>Hoje: <?= date('d/m/Y') ?> </h4>
     <?= $this->Form->create() ?>
     <?= $this->Form->button(__('Salvar')) ?>
     <?= $this->Form->end() ?>
