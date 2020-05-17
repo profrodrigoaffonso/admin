@@ -22,6 +22,7 @@ class RemediosController extends AppController
         if ($this->request->is('post')) {
             $remedio = $this->Remedios->newEntity();
             $this->Remedios->save($remedio);
+            $this->redirect(['action' => 'index']);
         }
         $this->paginate = [
             'order' => [
