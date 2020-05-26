@@ -18,8 +18,8 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('comando') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('execucao') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+                <!-- <th scope="col"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modified') ?></th> -->
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -29,8 +29,8 @@
                 <td><?= $this->Number->format($horario->id) ?></td>
                 <td><?= h($horario->comando) ?></td>
                 <td><?= h(date('d/m/Y H:i', strtotime($horario->execucao))) ?></td>
-                <td><?= h($horario->created) ?></td>
-                <td><?= h($horario->modified) ?></td>
+                <!-- <td><?= h($horario->created) ?></td>
+                <td><?= h($horario->modified) ?></td> -->
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $horario->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $horario->id]) ?>
