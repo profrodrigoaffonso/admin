@@ -103,4 +103,29 @@ class ComandosController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function atualizar()
+    {
+
+        $this->loadModel('Horarios');
+
+        $horario = $this->Horarios->find()
+            ->where([
+                'execucao' => date('Y-m-d H:i:00') 
+            ])
+            ->first();
+        
+        if($horario){
+
+            $this->Comandos->updateAll(
+                ['comando' => $horario->comando],
+                ['id' => 1] 
+            );
+
+            //debug($horario->execucao);
+        }
+        
+        die;
+
+    }
 }
