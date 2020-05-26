@@ -22,8 +22,16 @@
         <legend><?= __('Edit Horario') ?></legend>
         <?php
             echo $this->Form->control('comando');
-            echo $this->Form->control('execucao', ['empty' => true]);
+            //echo $this->Form->control('execucao', ['type' => 'date', 'value' => '2020-10-10']);
         ?>
+        <div class="input text">
+            <label for="comando">Execução Data</label>
+            <input type="date" name="execucao_data" maxlength="50" id="execucao_data" value="<?=date('Y-m-d', strtotime($horario->execucao))?>">
+        </div>
+        <div class="input text">
+            <label for="comando">Execução Hora</label>
+            <input type="time" name="execucao_hora" maxlength="50" id="execucao_hora" value="<?=date('H:i', strtotime($horario->execucao))?>">
+        </div>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>

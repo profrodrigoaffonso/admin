@@ -28,7 +28,7 @@
             <tr>
                 <td><?= $this->Number->format($horario->id) ?></td>
                 <td><?= h($horario->comando) ?></td>
-                <td><?= h($horario->execucao) ?></td>
+                <td><?= h(date('d/m/Y H:i', strtotime($horario->execucao))) ?></td>
                 <td><?= h($horario->created) ?></td>
                 <td><?= h($horario->modified) ?></td>
                 <td class="actions">

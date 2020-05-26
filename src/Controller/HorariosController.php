@@ -73,7 +73,10 @@ class HorariosController extends AppController
             'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $horario = $this->Horarios->patchEntity($horario, $this->request->getData());
+            $dados = $this->request->getData();
+            $dados['execucao'] = "{$dados['execucao_data']} {$dados['execucao_hora']}";
+            // debug($dados['comando']);die;
+            $horario = $this->Horarios->patchEntity($horario, $dados);
             if ($this->Horarios->save($horario)) {
                 $this->Flash->success(__('The horario has been saved.'));
 
