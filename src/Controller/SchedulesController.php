@@ -108,4 +108,81 @@ class SchedulesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function upCommand(){
+
+        $this->loadmodel('Commands');
+
+        $data_inicio = date('Y-m-d H:i:00');
+        $data_fim = date('Y-m-d H:i:59');
+
+        $hora_inicio = date('H:i:00');
+        $hora_fim = date('H:i:59');
+
+        $dia_semana = date('w');
+
+        //die($dia_semana);
+
+        // echo "$data_inicio $data_fim ";
+
+        $schedules = $this->Schedules->find()
+            ->where([
+                'date_time >= ' => $data_inicio,
+                'date_time <= ' => $data_fim,
+                
+            ]);
+
+        foreach($schedules as $schedule){
+            $this->Commands->updateAll([
+                'command' => $schedule->command_send,
+                'executed' => 'n'
+            ],
+            [
+                'id' => $schedule->command_id
+            ]);
+                       // debug($schedule);die;
+
+        }
+
+        // $schedules = $this->Schedules->find()
+        //     ->where([
+        //         'date_time >= ' => $data_inicio,
+        //         'date_time <= ' => $data_fim,
+                
+        //     ]);
+
+        // die;
+        
+
+        //debug($schedule);die;
+
+        die;
+
+        
+
+    }
+
+    public function timer()
+    {
+
+        if ($this->request->is('post')) {
+
+            $data = $this->request->getData();
+
+            print_r($data);
+            
+            $date_time = date('Y-m-d H:i:00', strtotime("+{$data['tempo']} minutes", strtotime(date('Y-m-d H:i'))));
+            
+            $this->Schedules->updateAll([
+                'date_time' => $date_time,
+                'command_send' => $data['command']
+            ],
+            [
+                'command_id' => 1,
+                'type' => 't'
+            ]);
+            
+        }
+
+    }
 }
