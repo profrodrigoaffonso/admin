@@ -169,7 +169,7 @@ class SchedulesController extends AppController
 
             $data = $this->request->getData();
 
-            print_r($data);
+            //print_r($data);
             
             $date_time = date('Y-m-d H:i:00', strtotime("+{$data['tempo']} minutes", strtotime(date('Y-m-d H:i'))));
             
