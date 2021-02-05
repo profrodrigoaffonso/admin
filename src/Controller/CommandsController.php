@@ -131,11 +131,12 @@ class CommandsController extends AppController
 
     public function alter(){
 
-        $command = $this->Commands->newEntity();
 
         if ($this->request->is('post')) {
 
             $data = $this->request->getData();
+
+            // debug($data);die;
 
             $command = $this->Commands->get(1);
             $command->command = $data['command'];
@@ -149,6 +150,9 @@ class CommandsController extends AppController
             // ]);
         
         };
+
+        $command = $this->Commands->newEntity();
+
 
         $this->set(compact('command'));
 
