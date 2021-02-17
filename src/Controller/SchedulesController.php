@@ -111,50 +111,58 @@ class SchedulesController extends AppController
 
     public function upCommand(){
 
-        $this->loadmodel('Commands');
+        set_time_limit(0);
 
-        $data_inicio = date('Y-m-d H:i:00');
-        $data_fim = date('Y-m-d H:i:59');
+        for($i = 1; $i <= 15; $i++){            
 
-        $hora_inicio = date('H:i:00');
-        $hora_fim = date('H:i:59');
+            $this->loadmodel('Commands');
 
-        $dia_semana = date('w');
+            $data_inicio = date('Y-m-d H:i:00');
+            $data_fim = date('Y-m-d H:i:59');
 
-        //die($dia_semana);
+            $hora_inicio = date('H:i:00');
+            $hora_fim = date('H:i:59');
 
-        // echo "$data_inicio $data_fim ";
+            $dia_semana = date('w');
 
-        $schedules = $this->Schedules->find()
-            ->where([
-                'date_time >= ' => $data_inicio,
-                'date_time <= ' => $data_fim,
-                
-            ]);
+            //die($dia_semana);
 
-        foreach($schedules as $schedule){
-            $this->Commands->updateAll([
-                'command' => $schedule->command_send,
-                'executed' => 'n'
-            ],
-            [
-                'id' => $schedule->command_id
-            ]);
-                       // debug($schedule);die;
+            // echo "$data_inicio $data_fim ";
+
+            $schedules = $this->Schedules->find()
+                ->where([
+                    'date_time >= ' => $data_inicio,
+                    'date_time <= ' => $data_fim,
+                    
+                ]);
+
+            foreach($schedules as $schedule){
+                $this->Commands->updateAll([
+                    'command' => $schedule->command_send,
+                    'executed' => 'n'
+                ],
+                [
+                    'id' => $schedule->command_id
+                ]);
+                        // debug($schedule);die;
+
+            }
+
+            // $schedules = $this->Schedules->find()
+            //     ->where([
+            //         'date_time >= ' => $data_inicio,
+            //         'date_time <= ' => $data_fim,
+                    
+            //     ]);
+
+            // die;
+
+            sleep(60);
+            
+
+            //debug($schedule);die;
 
         }
-
-        // $schedules = $this->Schedules->find()
-        //     ->where([
-        //         'date_time >= ' => $data_inicio,
-        //         'date_time <= ' => $data_fim,
-                
-        //     ]);
-
-        // die;
-        
-
-        //debug($schedule);die;
 
         die;
 
