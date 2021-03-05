@@ -19,7 +19,6 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -27,7 +26,6 @@
         <tbody>
             <?php foreach ($remedios as $remedio): ?>
             <tr>
-                <td><?= $this->Number->format($remedio->id) ?></td>
                 <td><?= h(date('d/m/Y H:i', strtotime($remedio->created))) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $remedio->id]) ?>
