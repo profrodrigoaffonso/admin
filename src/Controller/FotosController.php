@@ -23,7 +23,7 @@ class FotosController extends AppController
                 // die;
 
                 if (move_uploaded_file($imagem['tmp_name'], 'uploads/' . $imagem['name'])) {
-                    echo "Arquivo válido e enviado com sucesso.\n";
+                    //echo "Arquivo válido e enviado com sucesso.\n";
 
 
 
@@ -79,7 +79,7 @@ class FotosController extends AppController
 
 
                 } else {
-                    echo "Possível ataque de upload de arquivo!\n";
+                    //echo "Possível ataque de upload de arquivo!\n";
                 }
 
             }
