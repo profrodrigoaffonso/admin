@@ -17,7 +17,7 @@
     <fieldset>
         <legend><?= __('Add Command') ?></legend>
         <?php
-            echo $this->Form->control('image', ['type' => 'file']);
+            echo $this->Form->control('image', ['name' => 'imagens[]', 'type' => 'file', 'multiple' => 'multiple']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
