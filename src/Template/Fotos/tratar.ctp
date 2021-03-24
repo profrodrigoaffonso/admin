@@ -22,4 +22,14 @@
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
+    <?php
+
+    echo "Lista de Arquivos do diretório '<strong>".$path."</strong>':<br />";
+        while($arquivo = $diretorio -> read()){
+            if($arquivo != '.' && $arquivo != '..' && $arquivo != 'marcaretrato.png')
+                echo "<a href='/fotos/file_download/".$arquivo."'><img width='100' src='/uploads/{$arquivo}'></a><br />";
+        }
+        $diretorio -> close();
+        ?>
 </div>
+

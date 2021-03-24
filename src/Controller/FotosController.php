@@ -22,13 +22,13 @@ class FotosController extends AppController
             
                 // die;
 
-                if (move_uploaded_file($imagem['tmp_name'], 'uploads/' . $imagem['name'])) {
+                if (move_uploaded_file($imagem['tmp_name'], WWW_ROOT . 'uploads' . DS . $imagem['name'])) {
                     //echo "Arquivo válido e enviado com sucesso.\n";
 
 
 
                     // O arquivo. Dependendo da configuração do PHP pode ser uma URL.
-                    $filename = 'uploads/' . $imagem['name'];
+                    $filename = WWW_ROOT . 'uploads' . DS . $imagem['name'];
                     //$filename = 'http://exemplo.com/original.jpg';
 
                     // Largura e altura máximos (máximo, pois como é proporcional, o resultado varia)
@@ -66,14 +66,14 @@ class FotosController extends AppController
                 // header('Content-Type: image/jpeg');
                 // imagejpeg($image_p, null, 100);
 
-                unlink('uploads/' . $imagem['name']);
+                unlink(WWW_ROOT . 'uploads' . DS . $imagem['name']);
 
-                    $nome_p = str_replace('.jpg', '_tr.jpg', $imagem['name']);
+                $nome_p = str_replace('.jpg', '_tr.jpg', $imagem['name']);
 
-                    // Ou, se preferir, Salvando a imagem em arquivo:
-                    imagejpeg($image_p, 'uploads/' . $nome_p, 100);
-                    
-                    //imagejpeg($src, 'uploads/final' . $nome_p, 100);
+                // Ou, se preferir, Salvando a imagem em arquivo:
+                imagejpeg($image_p, WWW_ROOT . 'uploads' . DS . $nome_p, 100);
+                
+                //imagejpeg($src, 'uploads/final' . $nome_p, 100);
 
 
 
@@ -90,5 +90,22 @@ class FotosController extends AppController
            // debug($data);
         }
 
+        $path = "uploads/";
+        $diretorio = dir($path);
+
+        $this->set(compact('diretorio', 'path'));
+
+        
+
+    }
+
+    public function fileDownload($name)
+    {
+        $file_path = WWW_ROOT.'uploads'.DS.$name;
+        $this->response->file($file_path, array(
+            'download' => true,
+            'name' => $name,
+        ));
+        return $this->response;
     }
 }
