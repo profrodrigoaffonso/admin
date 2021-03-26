@@ -102,10 +102,10 @@ class FotosController extends AppController
     public function fileDownload($name)
     {
         $file_path = WWW_ROOT.'uploads'.DS.$name;
-        $this->response->withFile($file_path, array(
+        $response = $this->response->withFile($file_path, array(
             'download' => true,
             'name' => $name,
         ));
-        return $this->response;
+        return $response;
     }
 }
