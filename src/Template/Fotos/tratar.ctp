@@ -26,7 +26,7 @@
 
     echo "Lista de Arquivos do diretório '<strong>".$path."</strong>':<br />";
         while($arquivo = $diretorio -> read()){
-            if($arquivo != '.' && $arquivo != '..' && $arquivo != 'marcaretrato.png')
+            if($arquivo != '.' && $arquivo != '..' && $arquivo != 'marcaretrato.png' && $arquivo != 'marcaretrato.gif')
                 echo "<a href='/fotos/file_download/".$arquivo."'><img width='100' src='/uploads/{$arquivo}'></a><br />";
         }
         $diretorio -> close();
