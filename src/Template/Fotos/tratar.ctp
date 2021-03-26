@@ -31,7 +31,7 @@
         if($arquivo != '.' && $arquivo != '..' && $arquivo != 'marcaretrato.png' && $arquivo != 'marcaretrato.gif')
             echo "
                 <div class='col-2'>
-                    <a href='#'><img width='200' class='img-thumbnail' src='/uploads/{$arquivo}'></a>
+                    <img width='200' class='img-thumbnail' src='/uploads/{$arquivo}' onclick='openModal(\"/uploads/{$arquivo}\")'>
                     <a href='/fotos/file_download/".$arquivo."' class='btn-sm btn-block btn btn-primary'>Baixar</a>
                 </div>";
             }
@@ -39,5 +39,16 @@
 
 ?>
 </div>
-
-
+<div class="modal fade" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div id="imgModal"></div>
+    </div>
+  </div>
+</div>
+<script>
+    function openModal(img){
+        $('#imgModal').html('<img src="' + img + '">')
+        $('.modal').modal()
+    }
+</script>

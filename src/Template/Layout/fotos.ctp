@@ -13,3 +13,5 @@
 
 </body>
 </html>
+<?= $this->Html->script('jquery-3.6.0.min.js')?>
+<?= $this->Html->script('bootstrap.min.js')?>
