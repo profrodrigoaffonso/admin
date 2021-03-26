@@ -153,6 +153,8 @@ class FotosController extends AppController
 
         $this->set(compact('diretorio', 'path'));
 
+        return $this->render('tratar', 'fotos');
+
         
 
     }
