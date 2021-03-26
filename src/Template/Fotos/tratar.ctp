@@ -13,7 +13,7 @@
             echo $this->Form->control('image', ['class' => 'form-control', 'label' => false, 'name' => 'imagens[]', 'type' => 'file', 'multiple' => 'multiple']);
         ?>
     </div>
-    <?= $this->Form->button(__('Submit'), ['class' => "btn btn-primary"]) ?>
+    <?= $this->Form->button(__('Enviar'), ['class' => "btn btn-primary"]) ?>
     <?= $this->Form->end() ?>
     
     <?php
@@ -29,8 +29,12 @@
 <?php
     while($arquivo = $diretorio -> read()){
         if($arquivo != '.' && $arquivo != '..' && $arquivo != 'marcaretrato.png' && $arquivo != 'marcaretrato.gif')
-            echo "<a href='/fotos/file_download/".$arquivo."'><img width='200' class='img-thumbnail' src='/uploads/{$arquivo}'></a><br />";
-    }
+            echo "
+                <div class='col-2'>
+                    <a href='#'><img width='200' class='img-thumbnail' src='/uploads/{$arquivo}'></a>
+                    <a href='/fotos/file_download/".$arquivo."' class='btn-sm btn-block btn btn-primary'>Baixar</a>
+                </div>";
+            }
     $diretorio -> close();
 
 ?>
