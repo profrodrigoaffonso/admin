@@ -48,7 +48,7 @@
 </div>
 <script>
     function openModal(img){
-        $('#imgModal').html('<img src="' + img + '">')
+        $('#imgModal').html('<img class="img-fluid" src="' + img + '">')
         $('.modal').modal()
     }
 </script>
